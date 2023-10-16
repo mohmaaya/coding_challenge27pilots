@@ -8,7 +8,7 @@ import theme from "./theme";
 import { worker } from "./mocks/browser";
 
 if (process.env.REACT_APP_MSW === "active") {
-  console.log("starting worker");
+ console.log("starting worker");
   worker.start();
 }
 
