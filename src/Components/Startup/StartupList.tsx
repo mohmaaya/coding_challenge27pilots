@@ -12,9 +12,8 @@ export default function StartupList(): ReactElement {
     const [currPageStartups, setCurrPageStartups] = useState<Startup[]> ([]);
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setPage(value);
-        const currStartUps = [...startups];
         setCurrPageStartups(() => {
-            return currStartUps.slice((value * pageCount) - pageCount, (value * pageCount))
+            return startups.slice((value * pageCount) - pageCount, (value * pageCount))
         });
     };
         
@@ -26,7 +25,6 @@ export default function StartupList(): ReactElement {
 
             try {
                 const startupsData = await StartupHttpService.getStartups();
-                console.log(startupsData);
                 setStartups(startupsData);
                 setCurrPageStartups(startupsData.slice(0, 20));
             }
